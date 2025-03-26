@@ -1,0 +1,108 @@
+.form-criteria {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f1f1f1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  margin: 2rem ;
+  width: 90%;
+  &__group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    padding: 0 .5rem;
+    :last-child{
+      margin-bottom: 0rem;
+    }
+  }
+
+  &__label {
+    font-size: 16px;
+    color: #333;
+  }
+
+  &__input,
+  &__textarea {
+    width: 95%;
+    padding: 10px 6px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    outline: none;
+    border-radius: 4px;
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 20px;
+    max-height: 100px;
+  }
+
+  &__textarea--criteria {
+    width: 80%;
+    margin-right: 0.5rem;
+  }
+
+  &__group__add {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .form-criteria__btn--add {
+      background-color: #007bff;
+      color: white;
+      padding: 8px 12px;
+      margin-right: .4rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+      width: 10%;
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+
+  &__list {
+    list-style-type: decimal;
+  }
+
+  &__list-item {
+    background-color: #f1f1f1;
+    margin: 5px 0;
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+
+  &__btn {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &--submit {
+      background-color: #28a745;
+      color: white;
+      width: 85%;
+      margin: 0 auto;
+      &:hover {
+        background-color: #218838;
+      }
+    }
+
+    &--add {
+      background-color: #007bff;
+      color: white;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+}

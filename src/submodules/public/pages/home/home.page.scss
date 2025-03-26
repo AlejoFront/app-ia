@@ -1,0 +1,26 @@
+.app-container {
+    display: flex;
+    column-gap: 3rem;
+    width: 100%;
+    height: 100vh;
+    .column {
+        &-form {
+            flex: 1 1 30%;
+            max-width: 30%;
+        }
+        &-grid{
+            padding: 0rem 2rem;
+            flex: 1 1 70%;
+            max-width: 70%;
+        }
+    }
+    @media (max-width: 768px) {
+        flex-direction: column;
+    
+        .form-column,
+        .gallery-column {
+          max-width: 100%;
+        }
+      }
+  }
+  
