@@ -2,6 +2,7 @@ import { lazy } from 'react';
 import { IRouterList, IRouter } from './interface';
 
 const LazyPublicHome = lazy(() => import('submodules/public/pages/home/home.page'));
+const LazyPublicAssistant = lazy(() => import('submodules/public/pages/assistant/assistant.page'));
 
 const createRoute = (
   to: string, 
@@ -22,7 +23,8 @@ const createRoute = (
 
 export const routerList: IRouterList = {
   public: [
-    createRoute('/', '', LazyPublicHome, false)
+    createRoute('/', '', LazyPublicHome, false),
+    createRoute('/assistant', 'assistant', LazyPublicAssistant, false)
   ],
   private: [],
   shared: []

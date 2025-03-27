@@ -1,0 +1,12 @@
+{
+  "public": {
+    "components": {},
+    "pages": {
+      "home": {
+        "title": "QAssistant",
+        "placeholder": "APIKEY GEMINI",
+        "button": "ENTRAR"
+      }
+    }
+  }
+}

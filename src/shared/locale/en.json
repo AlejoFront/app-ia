@@ -1,0 +1,13 @@
+{
+  "public": {
+    "components": {},
+    "pages": {
+      "contacts": {},
+      "home": {
+        "title": "QAssistant",
+        "description": "APIKEY GEMINI",
+        "button": "ENTRAR"
+      }
+    }
+  }
+}

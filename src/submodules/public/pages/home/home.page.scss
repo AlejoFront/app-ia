@@ -1,26 +1,43 @@
 .app-container {
-    display: flex;
-    column-gap: 3rem;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
-    .column {
-        &-form {
-            flex: 1 1 30%;
-            max-width: 30%;
-        }
-        &-grid{
-            padding: 0rem 2rem;
-            flex: 1 1 70%;
-            max-width: 70%;
+    background-color: #FCFCFC;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    vertical-align: middle;
+    &__api-key{
+        width: 80vw;
+        height: 40vh;
+        margin: auto;
+        background-color: #DDDDDD;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        @media (min-width: 860px) {
+            width: 780px;
         }
     }
-    @media (max-width: 768px) {
-        flex-direction: column;
-    
-        .form-column,
-        .gallery-column {
-          max-width: 100%;
-        }
-      }
-  }
-  
+    &__title{
+        margin-top: 5rem;
+        margin-bottom: 3rem;
+        text-align: center;
+        color: #3331cf;
+        font-weight: bold;
+        font-size: 2rem;
+    }
+    &__input {
+        width: 70%;
+        margin: 0 auto;
+        text-align: center;
+        padding: 10px;
+        border-radius: 40px;
+        background-color: #FFFFFF;
+        margin-bottom: 3rem;
+    }
+    &__btn-enter{
+        width: 40%;
+        margin: 0 auto;
+        background-color: #28a745;
+    }
+}

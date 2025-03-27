@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './base.scss';
 import App from './App';
 import {Provider} from 'react-redux';
 import {store} from 'store';
+import { UserPreferencesProvider } from 'shared/context/userPreferences.context';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -10,9 +12,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Provider store={store} >
-      <App />
-    </Provider>
+        <UserPreferencesProvider>
+      <Provider store={store} >
+        <App />
+      </Provider>
+      </UserPreferencesProvider>
   </React.StrictMode>
 );
 reportWebVitals();

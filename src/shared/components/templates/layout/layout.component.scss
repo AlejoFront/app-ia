@@ -1,0 +1,20 @@
+.app__container{
+    width: 100vw;
+    height: 100vh;
+    background-color: #FEF7FF;
+    display: grid;
+    grid-template-areas: 'nav header' 'nav body';
+    grid-template-columns: 100px 1fr;
+    grid-template-rows: 100px 1fr;
+    .header {
+        grid-area: header;
+
+    }
+    .nav{
+        grid-area: nav;
+    }
+    .body {
+        grid-area: body;
+        background-color: #FFFFFF;
+    }
+}
