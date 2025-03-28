@@ -3,6 +3,9 @@ import {apiService} from 'store/service';
 
 const initialState = {
     isLoading: false,
+    isAuthenticated: false,
+    apiKey: '',
+    status: { code: null, message: null },
     response: []
 }
 
@@ -16,6 +19,13 @@ export const apiSlice = createSlice({
           setResponse(state, action) {
             state.response = action.payload;
           },
+          setAuthenticated(state, action) {
+            state.isAuthenticated = true;
+            state.apiKey = action.payload.key
+          },
+          clearMessageStatus(state) {
+            state.status = {code: null, message: null}
+          }
     },
     extraReducers: (builder) => {
         builder
@@ -33,13 +43,43 @@ export const apiSlice = createSlice({
                     state.response = action.payload.data || []
                 }
             )
+            .addMatcher(
+                apiService.endpoints.getIsValidApiKey.matchPending,
+                (state) => {
+                    state.isLoading = true;
+                }
+            )
+            .addMatcher(
+                apiService.endpoints.getIsValidApiKey.matchFulfilled,
+                (state, action) => {
+                    const key = action.meta.arg.originalArgs.key;
+                    state.isLoading = false;
+                    state.isAuthenticated = true;
+                    state.apiKey = key;
+                    localStorage.setItem('apiKey',key)
+                }
+            )
+            .addMatcher(
+                apiService.endpoints.getIsValidApiKey.matchRejected,
+                (state, action:any) => {
+                    const error = action.payload?.data.error;
+                    state.isLoading = false;
+                    state.status = {
+                        code: error.code,
+                        message: error.details[0].reason
+                    }
+                }
+            )
     }
 });
 export const {
     setLoading,
-    setResponse
+    setResponse,
+    clearMessageStatus,
+    setAuthenticated
 } = apiSlice.actions;
 export const {
-    useLazyGetDataQuery
+    useLazyGetDataQuery,
+    useLazyGetIsValidApiKeyQuery
 } = apiService;
 export default apiSlice.reducer;

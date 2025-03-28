@@ -1,9 +1,10 @@
-
-import {Layout} from 'shared/components'
+import {Layout, AssistantComponent} from 'shared/components'
 
 const Assistant = () => {
   return (
-    <Layout />
+    <Layout>
+      <AssistantComponent/>
+    </Layout>
   )
 }
 

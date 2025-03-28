@@ -1,13 +1,13 @@
 import { BrowserRouter as Router } from 'react-router-dom';
+import {useAppSelector} from 'store/hooks';
 import {MainRouter} from './main.router';
 
+
 export const AppRouter = () => {
-    /**
-     * sistema de loading
-     */
+  const {isAuthenticated} = useAppSelector((store) => store.apiIA);
   return (
     <Router>
-        <MainRouter isAuthenticated={false}  />
+        <MainRouter isAuthenticated={isAuthenticated}  />
     </Router>
   )
 }

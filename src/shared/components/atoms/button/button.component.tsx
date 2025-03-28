@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react'
-
+import './button.component.scss'
 interface ButtonProps {
     label?: string;
     icon?: ReactNode;
@@ -8,12 +8,14 @@ interface ButtonProps {
     type?: "button" | "submit" | "reset";
     disabled?: boolean;
     className?: string;
+    iconSrc?: string;
     [key: string]: any;
 }
 
 export const Button: FC<ButtonProps> = ({
     label,
     icon,
+    iconSrc,
     position = "top",
     onClick,
     type = "button",
@@ -29,7 +31,14 @@ export const Button: FC<ButtonProps> = ({
             className={`btn ${className} ${disabled ? "btn-disabled" : ""}`}
             {...rest}
         >
-            {position === "top" && icon && <span className="btn-icon">{icon}</span>}
+            {position === "top" && icon && !iconSrc && (
+                <span className="btn-icon">{icon}</span>
+            )}
+            {position === "top" && iconSrc && (
+                <figure className="btn-icon">
+                    <img src={iconSrc} alt="button icon" />
+                </figure>
+            )}
             {label && <span className="btn-label">{label}</span>}
             {position === "bottom" && icon && <span className="btn-icon">{icon}</span>}
         </button>

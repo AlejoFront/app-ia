@@ -15,6 +15,26 @@ export const apiService = createApi({
                 const resp = response.candidates[0].content.parts[0].text;
                 return {data: JSON.parse(resp.replace(/```json|```/g, '').trim())}
             }
+        }),
+        getIsValidApiKey: builder.query<any, {key:string}>({
+            query: ({key}) => ({
+                url:`?key=${key}`,
+                method: 'POST',
+                body:{
+                    "contents": [
+                        {
+                            "parts": [
+                                {
+                                    "text": "Te mande está petición unicamente para ver si el apikey está valido."
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }),
+            transformResponse: (response: any, _, arg) => {
+                return {response, arg};
+            },
         })
     })
 })

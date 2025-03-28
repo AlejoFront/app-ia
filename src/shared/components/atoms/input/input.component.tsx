@@ -1,12 +1,13 @@
 import { FC } from 'react'
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
     label?: string;
     id?: string;
     className?:string;
+    isTextArea?:boolean;
 }
 
-export const Input: FC<InputProps> = ({ label, id, className,...props }) => {
+export const Input: FC<InputProps> = ({ label, id, className,isTextArea = false,...props }) => {
     return (
         <>
             {label && (
@@ -14,7 +15,11 @@ export const Input: FC<InputProps> = ({ label, id, className,...props }) => {
                     {label}
                 </label>
             )}
-            <input id={id || props.name} {...props} className={`input-field ${className}`} />
+            {
+                isTextArea
+                ? <textarea id={id || props.name} {...props} className={`input-field ${className}`}/>
+                : <input id={id || props.name} {...props} className={`input-field ${className}`} />
+            }
         </>
     )
 }

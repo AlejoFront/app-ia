@@ -24,8 +24,9 @@ const createRoute = (
 export const routerList: IRouterList = {
   public: [
     createRoute('/', '', LazyPublicHome, false),
-    createRoute('/assistant', 'assistant', LazyPublicAssistant, false)
   ],
-  private: [],
+  private: [
+    createRoute('/assistant', 'assistant', LazyPublicAssistant,true)
+  ],
   shared: []
 };

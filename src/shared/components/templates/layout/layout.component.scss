@@ -8,13 +8,78 @@
     grid-template-rows: 100px 1fr;
     .header {
         grid-area: header;
-
+        display: flex;
+        &__figure {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-left: 2rem;
+        }
+        &__img {
+            width: 40px;
+            height: 40px;
+        }
+        &__figcaption {
+            margin-left: 1rem;
+            font-size: 20px;
+        }
     }
     .nav{
         grid-area: nav;
+        display: flex;
+        flex-direction: column;
+        &__link{
+            background-color: transparent;
+            color: #000000;
+            .btn-label{
+                font-size: .9rem;
+                font-weight: bold;
+            }
+        }
+        &__bar{
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            &__img{
+                width: 30px;
+                height: 30px;
+            }
+        }
+        &__items{
+            padding-top: 2rem;
+            height: calc(80% + 100px);
+        }
     }
     .body {
         grid-area: body;
         background-color: #FFFFFF;
+        padding: 2rem;
+        &__title{
+            text-transform: uppercase;
+            font-weight: 400;
+            font-size: 2rem;
+        }
+        &__article {
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+    }
+}
+
+figure.btn-icon{
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    background-color: #d9d6d6;
+    border-radius: 20px;
+    height: auto;
+    margin-bottom: .3rem;
+    img {
+        width: 25px;
+        height: 25px;
     }
 }
