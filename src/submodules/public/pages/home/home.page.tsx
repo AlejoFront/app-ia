@@ -1,21 +1,23 @@
-import {useAppSelector} from 'store/hooks';
+import { useEffect, useState } from 'react';
+import {useAppSelector, useAppDispatch} from 'store/hooks';
+import {useLazyGetIsValidApiKeyQuery, clearMessageStatus} from 'store/slices';
+import { useForm } from 'shared/hooks';
 import { Button, Input } from 'shared/components';
 import {useUserPreferences} from 'shared/context/userPreferences.context';
-import {useAppDispatch} from 'store/hooks';
-import {useLazyGetIsValidApiKeyQuery, clearMessageStatus} from 'store/slices';
+
 import './home.page.scss';
-import { useEffect, useState } from 'react';
+
 export const HomePage = () => {
-  
   const dispatch = useAppDispatch();
-  const [apiKey, setApiKey] = useState<string>('');
+  const { values, register } = useForm();
+  // const [apiKey, setApiKey] = useState<string>('AIzaSyA0ZHbDpNZf9E4BU8CZq1wkiPsz22R_QgY');
   const {translate} = useUserPreferences();
   const [getIsValidApiKey] = useLazyGetIsValidApiKeyQuery();
   const {isLoading, status} = useAppSelector((store) => store.apiIA);
 
   const handleSingIn = () => {
     if(isLoading) return;
-    getIsValidApiKey({key: apiKey})
+    getIsValidApiKey({key: values.apiKey})
   }
 
   useEffect(() => {
@@ -33,10 +35,9 @@ export const HomePage = () => {
         <h3 
           className='app-container__title' >{translate('public.pages.home.title')}</h3>
         <Input 
+          {...register("apiKey", { required: true })}
           placeholder={translate('public.pages.home.placeholder')} 
           className='app-container__input'
-          value={apiKey}
-          onChange={(e) => setApiKey(e.target.value)}
           required
         />
         <Button 

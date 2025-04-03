@@ -4,18 +4,18 @@ import { IconTrash } from 'shared/assets/icons';
 import { Button } from 'shared/components';
 
 interface Iprops {
-    data: any[]
+    data: any[];
+    remove: (id: number) => void;
 }
 
-export const ListCriteria: FC<Iprops> = ({data}) => {
-
+export const ListCriteria: FC<Iprops> = ({data, remove}) => {
     return (
         <ul className='group__list'>
             {
-                data.map(() => (
-                    <li className='group__item'>
-                        <span>Mostrar la respuesta de la operacion processRuntFile</span>
-                        <Button className='icon-trash' iconSrc={IconTrash} />
+                data.map((value, i) => (
+                    <li className='group__item' key={i}>
+                        <span>{value}</span>
+                        <Button className='icon-trash' iconSrc={IconTrash} onClick={() => remove(i)} />
                     </li>
                 ))
             }

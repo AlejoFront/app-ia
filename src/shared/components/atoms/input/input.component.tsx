@@ -1,24 +1,34 @@
-import { FC } from 'react'
-
+import { FC } from 'react';
+import {useForm} from 'shared/hooks';
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
+    name: string;
     label?: string;
     id?: string;
     className?:string;
     isTextArea?:boolean;
+    required?: boolean;
+    regex?: RegExp;
+    customValidator?: (value: string) => string | null;
 }
 
-export const Input: FC<InputProps> = ({ label, id, className,isTextArea = false,...props }) => {
+export const Input: FC<InputProps> = ({ label, name, id, className,isTextArea = false,required, regex, customValidator, ...props }) => {
+    const { register } = useForm();
+    const inputProps = register(name, { required, regex, customValidator });
     return (
         <>
             {label && (
-                <label htmlFor={id || props.name} className='input-label'>
+                <label htmlFor={id || name} className='input-label'>
                     {label}
                 </label>
             )}
             {
                 isTextArea
-                ? <textarea id={id || props.name} {...props} className={`input-field ${className}`}/>
-                : <input id={id || props.name} {...props} className={`input-field ${className}`} />
+                ? <textarea
+                    {...inputProps}
+                    id={id || name} {...props} className={`input-field ${className}`}/>
+                : <input
+                    {...inputProps}
+                    id={id || name} {...props} className={`input-field ${className}`} />
             }
         </>
     )
