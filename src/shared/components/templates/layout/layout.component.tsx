@@ -1,6 +1,7 @@
 import {FC, ReactNode, useState} from 'react';
-import { Header, Nav } from 'shared/components';
+import { Header, Nav, Loading } from 'shared/components';
 import { useUserPreferences } from 'shared/context/userPreferences.context';
+import {useAppSelector} from 'store/hooks';
 import './layout.component.scss'
 
 interface Iprops {
@@ -8,6 +9,7 @@ interface Iprops {
 }
 
 export const Layout: FC<Iprops> = ({children}) => {
+  const {isLoading} = useAppSelector(state => state.apiIA);
   const [isShow, setIsShow] = useState(false);
   const { translate } = useUserPreferences();
   return (
@@ -21,6 +23,9 @@ export const Layout: FC<Iprops> = ({children}) => {
         </article>
         {children}
       </section>
+      {
+        isLoading && <Loading />
+      }
     </div>
   )
 }

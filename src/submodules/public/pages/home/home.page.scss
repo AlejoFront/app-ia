@@ -40,5 +40,9 @@
         margin: 0 auto;
         background-color: #28a745;
         margin-bottom: 3rem;
+        &--disable{
+            background-color: #639970;
+            cursor: not-allowed;
+        }
     }
 }

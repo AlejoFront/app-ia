@@ -4,7 +4,7 @@ import {prom} from 'shared';
 import { Input, Button, } from 'shared/components';
 import { useUserPreferences } from 'shared/context/userPreferences.context';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
-import {addCriteria,removeCriteria, useLazyGetDataQuery} from 'store/slices'
+import {addCriteria,removeCriteria, useLazyGetDataQuery} from 'store/slices';
 import { IconPlus, } from 'shared/assets/icons';
 import './assistant.component.scss';
 
@@ -14,7 +14,8 @@ export const AssistantComponent = () => {
     const { 
             apiKey, 
             request: { criteriaList },
-            response
+            response,
+            isLoading
         } = useAppSelector((store) => store.apiIA);
     const { values, register, resetField } = useForm();
     const { translate } = useUserPreferences();
@@ -39,6 +40,13 @@ export const AssistantComponent = () => {
         getDataQuery({key: apiKey, body});
     }
 
+    const isDisable = (type: 'criteria' | 'valid-form'): boolean => {
+        if(type === 'criteria') {
+            return values.criteria === '';
+        }
+        return values.description === '' || criteriaList.length === 0 || isLoading;
+    }
+
     return (
         <section className='form__container'>
             <div className='group-form'>
@@ -56,20 +64,22 @@ export const AssistantComponent = () => {
                         className='form__input'
                     />
                 <Button
-                    className='form__button'
+                    className={`form__button ${isDisable('criteria') ? 'form__button--disabled' : ''}`}
                     iconSrc={IconPlus}
+                    disabled={isDisable('criteria')}
                     onClick={() => addCriteriaList()}
                 />
             </div>
             <ListCriteria data={criteriaList} remove={removeCriteriaList} />
             <div className='group_form'>
                 <Button 
-                    className='btn__generate' 
-                    label={translate('public.pages.assistant.body.button')} 
+                    className={`btn__generate ${isDisable('valid-form') ? 'btn__generate--disabled' : ''}`} 
+                    label={translate('public.pages.assistant.body.button')}
+                    disabled={isDisable('valid-form')}
                     onClick={() => handleClick()}
                 />
             </div>
-            <Resumen resumen={response} />
+            { response.length > 0 && <Resumen resumen={response} /> }
         </section>
     )
 }

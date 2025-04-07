@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import {useAppSelector, useAppDispatch} from 'store/hooks';
 import {useLazyGetIsValidApiKeyQuery, clearMessageStatus} from 'store/slices';
 import { useForm } from 'shared/hooks';
-import { Button, Input } from 'shared/components';
+import { Button, Input, Loading } from 'shared/components';
 import {useUserPreferences} from 'shared/context/userPreferences.context';
 
 import './home.page.scss';
@@ -10,7 +10,6 @@ import './home.page.scss';
 export const HomePage = () => {
   const dispatch = useAppDispatch();
   const { values, register } = useForm();
-  // const [apiKey, setApiKey] = useState<string>('AIzaSyA0ZHbDpNZf9E4BU8CZq1wkiPsz22R_QgY');
   const {translate} = useUserPreferences();
   const [getIsValidApiKey] = useLazyGetIsValidApiKeyQuery();
   const {isLoading, status} = useAppSelector((store) => store.apiIA);
@@ -28,7 +27,6 @@ export const HomePage = () => {
     // eslint-disable-next-line
   }, [status])
   
-
   return (
     <div className='app-container'>
       <section className='app-container__api-key'>
@@ -41,13 +39,16 @@ export const HomePage = () => {
           required
         />
         <Button 
-          disabled={isLoading}
+          disabled={isLoading || values.apiKey === ''}
           label={isLoading ? translate('public.shared.loading') : translate('public.pages.home.button')} 
           type='button'
-          className='app-container__btn-enter'
+          className={
+            `app-container__btn-enter 
+            ${isLoading || values.apiKey === '' ? 'app-container__btn-enter--disable': ''}`}
           onClick={() => handleSingIn()}
         />
       </section>
+      {isLoading && <Loading />}
     </div>
   )
 }
