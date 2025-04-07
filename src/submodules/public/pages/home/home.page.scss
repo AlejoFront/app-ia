@@ -6,20 +6,20 @@
     flex-direction: column;
     justify-content: center;
     vertical-align: middle;
-    &__api-key{
-        width: 80vw;
-        height: 40vh;
-        margin: auto;
+    &__api-key {
+        height: 300px;
+        width: 90%;
+        margin: 0 auto;
         background-color: #DDDDDD;
-        border-radius: 10px;
         display: flex;
         flex-direction: column;
-        @media (min-width: 860px) {
-            width: 780px;
+        border-radius: 10px;
+        @media (min-width: 700px) {
+            width: 600px;
         }
     }
     &__title{
-        margin-top: 5rem;
+        margin-top: 3rem;
         margin-bottom: 3rem;
         text-align: center;
         color: #3331cf;
@@ -27,7 +27,7 @@
         font-size: 2rem;
     }
     &__input {
-        width: 70%;
+        width: 90%;
         margin: 0 auto;
         text-align: center;
         padding: 10px;
@@ -36,8 +36,9 @@
         margin-bottom: 3rem;
     }
     &__btn-enter{
-        width: 40%;
+        width: 50%;
         margin: 0 auto;
         background-color: #28a745;
+        margin-bottom: 3rem;
     }
 }

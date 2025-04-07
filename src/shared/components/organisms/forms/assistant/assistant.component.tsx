@@ -51,10 +51,10 @@ export const AssistantComponent = () => {
             </div>
             <div className='group-form group-form--criteria'>
                 <Input
-                    {...register("criteria", { required: true })}
-                    label={translate('public.pages.assistant.body.secondLabel')}
-                    className='form__input'
-                />
+                        {...register("criteria", { required: true })}
+                        label={translate('public.pages.assistant.body.secondLabel')}
+                        className='form__input'
+                    />
                 <Button
                     className='form__button'
                     iconSrc={IconPlus}
@@ -62,14 +62,17 @@ export const AssistantComponent = () => {
                 />
             </div>
             <ListCriteria data={criteriaList} remove={removeCriteriaList} />
-            <div className='group_form'>
-                <Button 
-                    className='btn__generate' 
-                    label={translate('public.pages.assistant.body.button')} 
-                    onClick={() => handleClick()}
-                />
-            </div>
-            <Resumen resumen={response} />
+            {/* 
+                
+                <div className='group_form'>
+                    <Button 
+                        className='btn__generate' 
+                        label={translate('public.pages.assistant.body.button')} 
+                        onClick={() => handleClick()}
+                    />
+                </div>
+                <Resumen resumen={response} /> 
+            */}
         </section>
     )
 }

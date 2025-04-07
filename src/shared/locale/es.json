@@ -22,7 +22,20 @@
           "description": "Para generar casos de prueba, solo basta con agregar la descriptión y los criterios de aceptación de la historia de usuario. El programa generará los casos de prueba que sea conveniente según la información.",
           "firstLabel":"Descripción de la HU:",
           "secondLabel": "Agregar criterio de aceptación",
-          "button": "Generar casos de prueba"
+          "button": "Generar casos de prueba",
+          "summary": {
+            "title": "Resumen",
+            "test_case": "caso de prueba",
+            "card": {
+              "description": "descriptión:",
+              "priority": "prioridad:",
+              "type": "tipo:",
+              "preconditions": "precondiciones:",
+              "gherkin": "gherkin:",
+              "expected_result": "resultado esperado:",
+              "recommendations": "recomendaciones:"
+            }
+          }
         }
       }
     }
