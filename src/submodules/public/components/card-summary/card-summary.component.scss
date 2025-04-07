@@ -13,5 +13,8 @@
         border-bottom: 1px solid #D3D3D3;
         padding-bottom: 1rem;
         padding-top: 5rem;
+        &:first-of-type {
+            padding-top: 2rem;
+        }
     }
 }

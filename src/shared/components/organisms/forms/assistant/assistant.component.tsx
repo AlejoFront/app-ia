@@ -62,17 +62,14 @@ export const AssistantComponent = () => {
                 />
             </div>
             <ListCriteria data={criteriaList} remove={removeCriteriaList} />
-            {/* 
-                
-                <div className='group_form'>
-                    <Button 
-                        className='btn__generate' 
-                        label={translate('public.pages.assistant.body.button')} 
-                        onClick={() => handleClick()}
-                    />
-                </div>
-                <Resumen resumen={response} /> 
-            */}
+            <div className='group_form'>
+                <Button 
+                    className='btn__generate' 
+                    label={translate('public.pages.assistant.body.button')} 
+                    onClick={() => handleClick()}
+                />
+            </div>
+            <Resumen resumen={response} />
         </section>
     )
 }

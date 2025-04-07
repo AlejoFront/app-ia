@@ -1,16 +1,16 @@
-import {IconBars, IconStart} from 'shared/assets';
+import {FC} from 'react';
+import {IconStart} from 'shared/assets';
 import {useUserPreferences} from 'shared/context/userPreferences.context';
 import {Button} from 'shared/components';
 
-export const Nav = () => {
+interface IProps {
+  isShow: boolean;
+}
+
+export const Nav: FC<IProps> = ({isShow}) => {
   const {translate} = useUserPreferences();
   return (
-    <nav className='nav'>
-      <section className='nav__bar'>
-        <figcaption className='nav__bar__figure'>
-          <img src={IconBars} alt="icon-bars" className='nav__bar__img' />
-        </figcaption>
-      </section>
+    <nav className={`nav ${isShow ? 'nav--show' : ''}`}>
       <section className='nav__items'>
         <Button 
           className='nav__link'

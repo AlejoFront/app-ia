@@ -13,12 +13,14 @@
         column-gap: 2rem;
     }
     &__figure{
-        margin-left: 2rem;
         width: 100px;
         display: flex;
         justify-content: center;
         align-items: center;
         vertical-align: middle;
+        @media (min-width: 450px) {
+            margin-left: 2rem; 
+        }
     }
     &__img {
         width: 100%;

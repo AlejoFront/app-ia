@@ -1,6 +1,6 @@
 import {FC, useState} from 'react';
 import { Image } from 'shared/components';
-import { ListSummary } from "submodules/public/components";
+import { List } from 'submodules/public/components';
 import {IconTest, IconArrowRight, IconArrowDown} from 'shared/assets';
 import { useUserPreferences } from 'shared/context/userPreferences.context';
 import './card-summary.component.scss';
@@ -32,7 +32,7 @@ export const CardSummary: FC<Iprops> = ({value}) => {
         />
         <section 
             className={isExpanded ? 'test-case__summary test-case__summary--show': 'test-case__summary'}>
-                <ListSummary
+                <List
                     items={[
                         <>
                             <b>{translate('public.pages.assistant.body.summary.card.description')}</b>
@@ -72,14 +72,14 @@ export const CardSummary: FC<Iprops> = ({value}) => {
                         null,
                         null,
                         null,
-                        <ListSummary
+                        <List
                             items={value.preconditions}
                             itemClassName='test-case_list-item--secundary'
                             className='test-case_list test-case_list--secundary'
                         />,
                         null,
                         null,
-                        <ListSummary
+                        <List
                             items={value.recomendations}
                             itemClassName='test-case_list-item--secundary'
                             className='test-case_list test-case_list--secundary'

@@ -1,5 +1,5 @@
 import {FC, ReactNode} from 'react';
-import './list-summary.component.scss';
+import './list.component.scss';
 interface ListProps {
   items: (string | ReactNode)[];
   className?: string;
@@ -7,7 +7,7 @@ interface ListProps {
   nestedLists?: ReactNode[];
 }
 
-export const ListSummary: FC<ListProps> = ({
+export const List: FC<ListProps> = ({
   items,
   className = "",
   itemClassName = "",
@@ -25,4 +25,4 @@ export const ListSummary: FC<ListProps> = ({
   );
 };
 
-export default ListSummary;
+export default List;
