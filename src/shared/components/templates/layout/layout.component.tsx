@@ -15,17 +15,17 @@ export const Layout: FC<Iprops> = ({children}) => {
   return (
     <div className={`app__container ${isShow ? 'app__container--show' : ''}`}>
       <Header isShow={isShow} setIsShow={setIsShow} />
-      <Nav isShow={isShow} />
-      <section className='body'>
-        <h3 className='body__title'>{translate('public.pages.assistant.body.title')}</h3>
-        <article className='body__article'>
-          {translate('public.pages.assistant.body.description')}
-        </article>
-        {children}
-      </section>
-      {
-        isLoading && <Loading />
-      }
+      <main className='main'>
+        <Nav isShow={isShow} />
+        <section className='body'>
+          <h3 className='body__title'>{translate('public.pages.assistant.body.title')}</h3>
+          <article className='body__article'>
+            {translate('public.pages.assistant.body.description')}
+          </article>
+          {children}
+        </section>
+      </main>
+      { isLoading && <Loading /> }
     </div>
   )
 }

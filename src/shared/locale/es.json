@@ -27,13 +27,13 @@
             "title": "Resumen",
             "test_case": "caso de prueba",
             "card": {
-              "description": "descriptión:",
-              "priority": "prioridad:",
-              "type": "tipo:",
-              "preconditions": "precondiciones:",
-              "gherkin": "gherkin:",
-              "expected_result": "resultado esperado:",
-              "recommendations": "recomendaciones:"
+              "description": "DESCRIPTIÓN:",
+              "priority": "PRIORIDAD:",
+              "type": "TIPO:",
+              "preconditions": "PRECONDICIONES:",
+              "gherkin": "GHERKIN:",
+              "expected_result": "RESULTADO ESPERADO:",
+              "recommendations": "RECOMENDACIONES:"
             }
           }
         }

@@ -30,6 +30,7 @@ body {
   color: #333; /* Color de texto */
   -webkit-font-smoothing: antialiased; /* Mejora la suavidad de las fuentes */
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* Eliminar bordes predeterminados de formularios */

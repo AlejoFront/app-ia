@@ -12,6 +12,9 @@
                     grid-template-columns: 83% 15%;
                     column-gap: 10px;
                     margin-top: 2rem;
+                    @media (min-width: 700px) {
+                        grid-template-columns: 90% 9%;
+                    }
                     .input-label{
                             grid-area: label;
                         }
