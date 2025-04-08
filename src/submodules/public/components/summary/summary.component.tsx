@@ -1,18 +1,18 @@
 import {FC} from 'react';
 import { useUserPreferences } from 'shared/context/userPreferences.context';
 import {CardSummary} from 'submodules/public/components';
-import './resumen.component.scss';
+import './summary.component.scss';
 interface IProps {
-  resumen: any[]
+  summary: any[]
 }
 
-export const Resumen: FC<IProps> = ({resumen}) => { 
+export const Summary: FC<IProps> = ({summary}) => { 
   const {translate} = useUserPreferences();
   return (
     <div className='test-case__body'>
       <h3 className='test-case__title'>{translate('public.pages.assistant.body.summary.title')}</h3>
       {
-        resumen.map((value) => (
+        summary?.map((value) => (
           <CardSummary 
             key={value.id}
             value={value}
@@ -23,4 +23,4 @@ export const Resumen: FC<IProps> = ({resumen}) => {
   )
 }
 
-export default Resumen
+export default Summary

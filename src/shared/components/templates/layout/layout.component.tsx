@@ -10,7 +10,7 @@ interface Iprops {
 
 export const Layout: FC<Iprops> = ({children}) => {
   const {isLoading} = useAppSelector(state => state.apiIA);
-  const [isShow, setIsShow] = useState(false);
+  const [isShow, setIsShow] = useState(true);
   const { translate } = useUserPreferences();
   return (
     <div className={`app__container ${isShow ? 'app__container--show' : ''}`}>

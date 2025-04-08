@@ -1,4 +1,4 @@
-import { ListCriteria, Resumen } from 'submodules/public/components';
+import { ListCriteria, Summary } from 'submodules/public/components';
 import { useForm } from 'shared/hooks';
 import {prom} from 'shared';
 import { Input, Button, } from 'shared/components';
@@ -79,7 +79,7 @@ export const AssistantComponent = () => {
                     onClick={() => handleClick()}
                 />
             </div>
-            { response.length > 0 && <Resumen resumen={response} /> }
+            { response.length > 0 && <Summary summary={response} /> }
         </section>
     )
 }

@@ -8,7 +8,7 @@ interface ListProps {
 }
 
 export const List: FC<ListProps> = ({
-  items,
+  items = [],
   className = "",
   itemClassName = "",
   nestedLists = [],

@@ -1,4 +1,5 @@
-import {Layout, AssistantComponent} from 'shared/components'
+import {Layout} from 'shared/components';
+import {AssistantComponent} from 'submodules/public/components';
 
 const Assistant = () => {
   return (
