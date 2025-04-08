@@ -14,7 +14,6 @@ export const AssistantComponent = () => {
     const { 
             apiKey, 
             request: { criteriaList },
-            response,
             isLoading
         } = useAppSelector((store) => store.apiIA);
     const { values, register, resetField } = useForm();
@@ -79,7 +78,7 @@ export const AssistantComponent = () => {
                     onClick={() => handleClick()}
                 />
             </div>
-            { response.length > 0 && <Summary summary={response} /> }
+            <Summary />
         </section>
     )
 }

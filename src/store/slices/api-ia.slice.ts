@@ -9,7 +9,17 @@ const initialState:{
         code: null;
         message: null;
     };
-    response: any[];
+    response: {
+        id: string,
+        description: string,
+        expected_result: string,
+        gherking: string,
+        name: string,
+        preconditions: string[],
+        priority: string,
+        recommendations: string[],
+        type: string
+    }[];
     request: {
         description: string;
         criteriaList: string[];

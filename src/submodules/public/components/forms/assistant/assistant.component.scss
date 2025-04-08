@@ -81,6 +81,26 @@
         &--textarea{
             height: 6.5rem;
             resize: none;
+            scrollbar-width: thin;
+            scrollbar-color: #888 transparent;
+            &::-webkit-scrollbar {
+                width: 2px;
+                height: 2px;
+            }
+              
+            &::-webkit-scrollbar-track {
+                background: transparent;
+            }
+              
+            &::-webkit-scrollbar-thumb {
+                background-color: #888;
+                border-radius: 10px;
+            }
+            &::-webkit-scrollbar-button {
+                display: none;
+                height: 0;
+                width: 0;
+            }
         }
     }
     &__button{

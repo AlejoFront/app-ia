@@ -2,22 +2,27 @@ import {FC} from 'react';
 import { useUserPreferences } from 'shared/context/userPreferences.context';
 import {CardSummary} from 'submodules/public/components';
 import './summary.component.scss';
-interface IProps {
-  summary: any[]
-}
+import { useAppSelector } from 'store/hooks';
 
-export const Summary: FC<IProps> = ({summary}) => { 
+export const Summary: FC = () => { 
   const {translate} = useUserPreferences();
+  const { 
+    response
+} = useAppSelector((store) => store.apiIA);
+
+  if(response.length === 0) return null;
+
   return (
     <div className='test-case__body'>
       <h3 className='test-case__title'>{translate('public.pages.assistant.body.summary.title')}</h3>
       {
-        summary?.map((value) => (
-          <CardSummary 
-            key={value.id}
-            value={value}
-          />
-        ))
+       
+       response?.map((value) => (
+           <CardSummary 
+             key={value.id}
+             value={value}
+           />
+         ))
       }
     </div>
   )
