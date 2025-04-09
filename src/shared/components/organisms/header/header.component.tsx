@@ -1,7 +1,10 @@
 import { Dispatch, FC, SetStateAction } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {IconBars, IconArrowBack} from 'shared/assets';
 import {Image} from 'shared/components';
 import { useUserPreferences } from 'shared/context/userPreferences.context';
+import { useAppDispatch } from 'store/hooks';
+import { clearState } from 'store/slices';
 
 interface Iprops {
   isShow: boolean;
@@ -9,8 +12,13 @@ interface Iprops {
 }
 
 export const Header: FC<Iprops> = ({setIsShow, isShow}) => {
-
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const {translate} = useUserPreferences();
+  const onClickExit = () => {
+    localStorage.removeItem('apiKey');
+    dispatch(clearState());
+  }
   return (
     <header className='header'>
         <Image 
@@ -27,6 +35,7 @@ export const Header: FC<Iprops> = ({setIsShow, isShow}) => {
         alt='icon-row-back'
         src={IconArrowBack} 
         caption={translate('public.pages.assistant.header.title')}
+        onClick={() => onClickExit()}
       />
     </header>
   )

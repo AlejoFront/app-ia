@@ -40,6 +40,9 @@ export const apiSlice = createSlice({
     name: 'apiIA',
     initialState,
     reducers: {
+        clearState() {
+            return initialState
+        },
         setLoading(state, action) {
             state.isLoading = action.payload;
         },
@@ -47,7 +50,7 @@ export const apiSlice = createSlice({
             state.response = action.payload;
         },
         setAuthenticated(state, action) {
-            state.isAuthenticated = true;
+            state.isAuthenticated = action.payload.isAuthenticated;
             state.apiKey = action.payload.key
         },
         clearMessageStatus(state) {
@@ -110,6 +113,7 @@ export const {
     setResponse,
     clearMessageStatus,
     setAuthenticated,
+    clearState,
     addCriteria,
     removeCriteria
 } = apiSlice.actions;

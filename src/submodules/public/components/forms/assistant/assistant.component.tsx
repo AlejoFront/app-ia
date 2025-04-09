@@ -1,50 +1,19 @@
 import { ListCriteria, Summary } from 'submodules/public/components';
-import { useForm } from 'shared/hooks';
-import {prom} from 'shared';
 import { Input, Button, } from 'shared/components';
-import { useUserPreferences } from 'shared/context/userPreferences.context';
-import {useAppDispatch, useAppSelector} from 'store/hooks';
-import {addCriteria,removeCriteria, useLazyGetDataQuery} from 'store/slices';
+import {useSummary} from 'submodules/public/hooks';
 import { IconPlus, } from 'shared/assets/icons';
 import './assistant.component.scss';
 
 export const AssistantComponent = () => {
-    const [getDataQuery] = useLazyGetDataQuery();
-    const dispatch = useAppDispatch();
-    const { 
-            apiKey, 
-            request: { criteriaList },
-            isLoading
-        } = useAppSelector((store) => store.apiIA);
-    const { values, register, resetField } = useForm();
-    const { translate } = useUserPreferences();
- 
-    const addCriteriaList = () => {
-        dispatch(addCriteria(values.criteria));
-        resetField('criteria');
-    }
-
-    const removeCriteriaList = (id: number) => {
-        dispatch(removeCriteria(id));
-    }
-
-    const handleClick = () => {
-        const body = {
-            contents: [
-                {
-                  parts: [{text: `${prom} ${values.description} ${criteriaList.join(", ")}`}]
-                }
-              ]
-        }
-        getDataQuery({key: apiKey, body});
-    }
-
-    const isDisable = (type: 'criteria' | 'valid-form'): boolean => {
-        if(type === 'criteria') {
-            return values.criteria === '';
-        }
-        return values.description === '' || criteriaList.length === 0 || isLoading;
-    }
+    const {
+        register,
+        translate,
+        addCriteriaList,
+        removeCriteriaList,
+        handleClick,
+        isDisable,
+        criteriaList
+    } = useSummary();
 
     return (
         <section className='form__container'>

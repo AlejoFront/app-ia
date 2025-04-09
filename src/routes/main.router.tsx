@@ -2,7 +2,7 @@ import { FC, Suspense, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { routerList } from './routes';
 import { ProtectedRoute } from './protected.router';
-import {useAppDispatch, useAppSelector} from 'store/hooks';
+import {useAppDispatch} from 'store/hooks';
 import {setAuthenticated} from 'store/slices';
 
 interface IProps {
@@ -10,7 +10,6 @@ interface IProps {
 }
 
 export const MainRouter: FC<IProps> = ({ isAuthenticated }) => {
-  const {isLoading} = useAppSelector(state => state.apiIA);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   useEffect(() => {
@@ -30,7 +29,7 @@ export const MainRouter: FC<IProps> = ({ isAuthenticated }) => {
   const validApiKeyStorage = async () => {
     const apiKey = await localStorage.getItem('apiKey');
     if(apiKey){
-      dispatch(setAuthenticated({key: apiKey}))
+      dispatch(setAuthenticated({key: apiKey}));
     }
   }
 
