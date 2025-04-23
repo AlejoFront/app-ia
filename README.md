@@ -4,7 +4,7 @@
 ![alt text](readme/pragma-logo.png)
 
 # ¿Qué  es QAssistant?
-La aplicación pretende ser un asistente impulsado por inteligencia artificial para las actividades cotidianas que realiza una persona que cumple el rol de Quality Assurance en los equipos de desarrollo de software. Como se dijo anteriormente, solo es un asistente y no pretende reemplazar el rol de QA, más bien, prentende ser una herramienta que ayude a ampliar el campo visual en cada uno de los diferentes módulos de la aplicación.
+La aplicación pretende ser un asistente impulsado por inteligencia artificial para las actividades cotidianas que realiza una persona que cumple el rol de Quality Assurance en los equipos de desarrollo de software. Como se dijo anteriormente, solo es un asistente y no pretende reemplazar el rol de QA, más bien, prentende ser una herramienta que ayude a ampliar el campo visual del QA.
 
 # ¿Qué módulos tiene la app?
 Actualmente se encuentra en desarrollo los módulos:
